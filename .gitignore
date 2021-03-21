@@ -1,0 +1,4 @@
+libqmkrc.a
+src/*.o
+test/test-*
+!test/test-*.c
