@@ -1,4 +1,4 @@
 libqmkrc.a
-src/*.o
+*.o
 test/test-*
 !test/test-*.c
