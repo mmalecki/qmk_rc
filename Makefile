@@ -3,7 +3,7 @@ AR=llvm-ar-11
 
 OBJS += qmk_rc.o
 
-TESTS += test/test-parser-data test/test-parser-no-data
+TESTS += test/test-parser-data test/test-parser-no-data test/test-parser-two-commands test/test-parser-padding
 
 CFLAGS=-g -I.
 
