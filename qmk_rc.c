@@ -23,11 +23,12 @@ enum qmk_rc_commands_quantum {
   OLED_WRITE,
   OLED_CLEAR,
 
-  // RGBLIGHT_SETRGB_AT accepts 4 data bytes:
-  // R - G - B - I
+  // RGBLIGHT_SETRGB_RANGE accepts 4 data bytes:
+  // R - G - B - I0 - I1
   // * RGB - the color
-  // * I - the LED index
-  RGBLIGHT_SETRGB_AT,
+  // * I0 - the LED index start
+  // * I1 - the LED index end
+  RGBLIGHT_SETRGB_RANGE,
 #endif
 };
 
@@ -50,12 +51,13 @@ void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
 #endif
 
 #ifdef RGBLIGHT_ENABLE
-    case RGBLIGHT_SETRGB_AT:
-      rgblight_setrgb_at(
+    case RGBLIGHT_SETRGB_RANGE:
+      rgblight_setrgb_range(
         command->data[0], // R
         command->data[1], // G
         command->data[2], // B
-        command->data[3]  // diode index
+        command->data[3], // diode index start
+        command->data[4]  // diode index end
       );
       break;
 #endif
