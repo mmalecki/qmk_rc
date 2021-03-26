@@ -14,7 +14,7 @@ libqmkrc.a: $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test/%: test/%.c libqmkrc.a
-	$(CC) $(CFLAGS) -o $@ $?
+	$(CC) $(CFLAGS) -o $@ $^
 
 test: $(TESTS)
 	./test/run
