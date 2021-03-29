@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-find . -executable -name 'test-*' -exec {} \;
+find 'test' -executable -name 'test-*' -printf '%p:\n' -exec {} \;
