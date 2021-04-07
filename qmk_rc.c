@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "qmk_rc.h"
 
-#ifdef QMK_RC_DEFAULT_COMMANDS_ENABLE
+#ifndef QMK_RC_DISABLE_DEFAULT_COMMANDS
 #  include <string.h>
 #  ifdef OLED_DRIVER_ENABLE
 #    include "oled_driver.h"
@@ -16,7 +16,7 @@ __attribute__((weak)) void qmk_rc_process_command_user(qmk_rc_command_t* command
 
 enum qmk_rc_commands_quantum {
   RESERVED = 0,
-#ifdef QMK_RC_DEFAULT_COMMANDS_ENABLE
+#ifndef QMK_RC_DISABLE_DEFAULT_COMMANDS
   OLED_OFF,
   OLED_ON,
   // OLED_WRITE accepts a string to write to the OLED display.
@@ -32,7 +32,7 @@ enum qmk_rc_commands_quantum {
 #endif
 };
 
-#ifdef QMK_RC_DEFAULT_COMMANDS_ENABLE
+#ifndef QMK_RC_DISABLE_DEFAULT_COMMANDS
 void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
   char* null_terminated_data;
 
