@@ -23,24 +23,26 @@ enum qmk_rc_commands_quantum {
   OLED_WRITE,
   OLED_CLEAR,
 
-  // RGBLIGHT_SETRGB_RANGE accepts 4 data bytes:
+  // RGBLIGHT_SETRGB_RANGE and RGB_MATRIX_SETRGB_RANGE accept 5 data bytes:
   // R - G - B - I0 - I1
   // * RGB - the color
   // * I0 - the LED index start
   // * I1 - the LED index end
   RGBLIGHT_SETRGB_RANGE,
+
+  RGB_MATRIX_SETRGB_RANGE,
 #endif
 };
 
 #ifndef QMK_RC_DISABLE_DEFAULT_COMMANDS
 void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
-  char* null_terminated_data;
-
   switch (command->id) {
 #ifdef OLED_DRIVER_ENABLE
     case OLED_OFF: oled_off(); break;
     case OLED_ON: oled_on(); break;
     case OLED_WRITE:
+      char* null_terminated_data;
+
       null_terminated_data = malloc(command->data_length + 1);
       memcpy(null_terminated_data, command->data, command->data_length);
       null_terminated_data[command->data_length] = '\0';
