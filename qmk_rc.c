@@ -9,6 +9,9 @@
 #  ifdef RGBLIGHT_ENABLE
 #    include "rgblight.h"
 #  endif
+#  ifdef RGB_MATRIX_ENABLE
+#    include "rgb_matrix.h"
+#  endif
 #endif
 
 __attribute__((weak)) void qmk_rc_process_command_user(qmk_rc_command_t* command) { }
@@ -62,6 +65,13 @@ void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
         command->data[4]  // diode index end
       );
       break;
+#endif
+
+#ifdef RGB_MATRIX_ENABLE
+      case RGB_MATRIX_SETRGB_RANGE:
+        for (int i = command->data[3]; i < command->data[4]; i++)
+          rgb_matrix_set_color(i, command->data[0], command->data[1], command->data[2]);
+        break;
 #endif
     default:
       qmk_rc_process_command_user(command);
