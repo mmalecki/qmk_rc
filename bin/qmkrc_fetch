@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+GIT_REF="latest"
+wget -i - << URLS
+https://raw.githubusercontent.com/mmalecki/qmk_rc/$GIT_REF/qmk_rc.c
+https://raw.githubusercontent.com/mmalecki/qmk_rc/$GIT_REF/qmk_rc.h
+URLS
