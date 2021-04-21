@@ -1,6 +1,6 @@
 # QMK RC
 QMK RC is a project that aims to bring the same convenience to controlling
-your QMK keyboard from your computer, as QMK did to programming keyboards.
+your [QMK](https://qmk.fm/) keyboard from your computer, as QMK did to programming keyboards.
 
 ## Getting started
 To get started with QMK RC, you need to set up the keyboard and the host. Let's
