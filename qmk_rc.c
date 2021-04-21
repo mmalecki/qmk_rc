@@ -44,13 +44,7 @@ void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
     case OLED_OFF: oled_off(); break;
     case OLED_ON: oled_on(); break;
     case OLED_WRITE:
-      char* null_terminated_data;
-
-      null_terminated_data = malloc(command->data_length + 1);
-      memcpy(null_terminated_data, command->data, command->data_length);
-      null_terminated_data[command->data_length] = '\0';
-      oled_write(null_terminated_data, false);
-      free(null_terminated_data);
+      oled_write((const char*) command->data, false);
       break;
     case OLED_CLEAR: oled_clear(); break;
 #endif
