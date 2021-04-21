@@ -52,8 +52,18 @@ Now, to the fun part.
 
 Launch `qmkrcd` by typing `qmkrcd`. It will scan the HID devices attached to
 the host, and attempt to find one that quacks like a QMK-supported keybaord.
-If it doesn't find your device, please open an issue on the
-[`qmkrcd` repository](https://github.com/mmalecki/qmkrcd).
+
+Alternatively, you can have `qmkrcd` connect to a specified device by passing
+its name as an argument: `qmkrcd 'foostan corne'`.
+
+If `qmkrcd` doesn't find your device, please open an issue on [its repository](https://github.com/mmalecki/qmkrcd).
+
+From now on, you should be able to control your keyboard.
+For example, to write a string to an OLED attached to your keyboard:
+
+```sh
+curl 127.0.0.1:9916/command -XPOST -H 'content-type: application/json' -d '{"id":3,"data":"Hello, QMK RC!"}' -v
+```
 
 ## Acknowledgments
 * The QMK team for authoring an amazing piece of software
