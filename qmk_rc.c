@@ -26,6 +26,8 @@ enum qmk_rc_commands_quantum {
   OLED_WRITE,
   OLED_CLEAR,
 
+  RGBLIGHT_OFF,
+  RGBLIGHT_ON,
   // RGBLIGHT_SETRGB_RANGE and RGB_MATRIX_SETRGB_RANGE accept 5 data bytes:
   // R - G - B - I0 - I1
   // * RGB - the color
@@ -33,7 +35,16 @@ enum qmk_rc_commands_quantum {
   // * I1 - the LED index end
   RGBLIGHT_SETRGB_RANGE,
 
+  RGB_MATRIX_OFF,
+  RGB_MATRIX_ON,
   RGB_MATRIX_SETRGB_RANGE,
+
+  LAYER_ON,
+  LAYER_OFF,
+  LAYER_CLEAR,
+  LAYER_MOVE,
+
+  SEND_STRING,
 #endif
 };
 
@@ -50,6 +61,8 @@ void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
 #endif
 
 #ifdef RGBLIGHT_ENABLE
+    case RGBLIGHT_OFF: rgblight_disable_noeeprom(); break;
+    case RGBLIGHT_ON: rgblight_enable_noeeprom(); break;
     case RGBLIGHT_SETRGB_RANGE:
       rgblight_setrgb_range(
         command->data[0], // R
@@ -62,11 +75,21 @@ void qmk_rc_process_command_quantum(qmk_rc_command_t* command) {
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-      case RGB_MATRIX_SETRGB_RANGE:
-        for (int i = command->data[3]; i < command->data[4]; i++)
-          rgb_matrix_set_color(i, command->data[0], command->data[1], command->data[2]);
-        break;
+    case RGB_MATRIX_OFF: rgb_matrix_disable_noeeprom(); break;
+    case RGB_MATRIX_ON: rgb_matrix_enable_noeeprom(); break;
+    case RGB_MATRIX_SETRGB_RANGE:
+      for (int i = command->data[3]; i < command->data[4]; i++)
+        rgb_matrix_set_color(i, command->data[0], command->data[1], command->data[2]);
+      break;
 #endif
+
+    case LAYER_ON:
+    case LAYER_OFF:
+    case LAYER_CLEAR:
+    case LAYER_MOVE:
+
+    case SEND_STRING:
+
     default:
       qmk_rc_process_command_user(command);
   }

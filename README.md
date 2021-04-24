@@ -65,6 +65,9 @@ For example, to write a string to an OLED attached to your keyboard:
 curl 127.0.0.1:9916/command -XPOST -H 'content-type: application/json' -d '{"id":3,"data":"Hello, QMK RC!"}' -v
 ```
 
+For a full list of built-in commands, see [Commands]().
+
+
 ## Acknowledgments
 * The QMK team for authoring an amazing piece of software
 * `libuv` team for their test framework
