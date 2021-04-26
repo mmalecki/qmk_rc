@@ -68,6 +68,7 @@ curl 127.0.0.1:9916/command -XPOST \
 ```
 
 For a full list of built-in commands, see [Commands](doc/commands.md).
+You can also implement your own, [Custom commands](doc/custom-commands.md).
 
 ## Acknowledgments
 * The QMK team for authoring an amazing piece of software
