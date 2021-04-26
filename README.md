@@ -67,7 +67,7 @@ curl 127.0.0.1:9916/command -XPOST \
   -d '{"id":3,"data":"Hello, QMK RC!"}' -v
 ```
 
-For a full list of built-in commands, see [Commands]().
+For a full list of built-in commands, see [Commands](doc/commands.md).
 
 ## Acknowledgments
 * The QMK team for authoring an amazing piece of software
