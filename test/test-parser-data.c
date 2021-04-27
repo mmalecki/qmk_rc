@@ -9,7 +9,7 @@ qmk_rc_parser_test_case_t test_case = {
   .command = {
     .id = 15,
     .data_length = 5,
-    .data = "qmkrc"
+    .data = (uint8_t*) "qmkrc"
   },
   .data = {15, 5, 0, 0, 0, 113, 109, 107, 114, 99},
   .data_length = 10,
@@ -22,7 +22,7 @@ void qmk_rc_process_command_user(qmk_rc_command_t* command) {
   ASSERT_EQ(++callbacks, 1);
   ASSERT_EQ(command->id, test_case.command.id);
   ASSERT_EQ(command->data_length, test_case.command.data_length);
-  ASSERT_STR_EQ(command->data, test_case.command.data);
+  ASSERT_STR_EQ((const char*) command->data, (const char*) test_case.command.data);
 }
 
 int main() {
