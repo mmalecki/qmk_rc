@@ -3,7 +3,7 @@ AR=llvm-ar-11
 
 OBJS += qmk_rc.o
 
-TESTS += test/test-parser-data test/test-parser-no-data test/test-parser-two-commands test/test-parser-padding
+TESTS += test/test-parser-data test/test-parser-no-data test/test-parser-two-commands test/test-parser-padding test/test-parser-long-data
 
 # We use this Makefile for tests exclusively, therefore we can compile with
 # default commands disabled. Production builds are compiled by the QMK build system.

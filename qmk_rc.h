@@ -26,7 +26,7 @@ typedef enum {
 typedef struct {
   qmk_rc_parser_state_t state;
   uint8_t data_length_bytes_read;
-  uint8_t data_bytes_read;
+  uint32_t data_bytes_read;
   qmk_rc_data_length_t data_length;
 } qmk_rc_parser_t;
 
