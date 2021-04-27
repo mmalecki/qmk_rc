@@ -27,4 +27,5 @@ void qmk_rc_process_command_user(qmk_rc_command_t* command) {
 
 int main() {
   qmk_rc_receive(buffer, QMK_RC_BUFFER_MAX, test_case.data, test_case.data_length);
+  ASSERT_EQ(callbacks, 1);
 }

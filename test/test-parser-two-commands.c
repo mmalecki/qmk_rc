@@ -19,4 +19,5 @@ void qmk_rc_process_command_user(qmk_rc_command_t* command) {
 int main() {
   uint8_t data[] = {1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 3};
   qmk_rc_receive(buffer, QMK_RC_BUFFER_MAX, data, sizeof(data));
+  ASSERT_EQ(callbacks, 2);
 }

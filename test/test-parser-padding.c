@@ -20,4 +20,5 @@ int main() {
     0, 0, 0, 0, 0  // padding
   };
   qmk_rc_receive(buffer, QMK_RC_BUFFER_MAX, data, sizeof(data));
+  ASSERT_EQ(callbacks, 1);
 }
