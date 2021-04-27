@@ -1,9 +1,9 @@
 #include <stdlib.h>
-#include "quantum.h"
 #include "qmk_rc.h"
 
 #ifndef QMK_RC_DISABLE_DEFAULT_COMMANDS
 #  include <string.h>
+#  include "quantum.h"
 #  ifdef OLED_DRIVER_ENABLE
 #    include "oled_driver.h"
 #  endif
